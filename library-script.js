@@ -414,4 +414,4 @@ document.addEventListener('DOMContentLoaded', function() {
             searchInput.focus();
         }
     });
-});
+});/* Force redeployment Tue Oct  7 18:51:48 EDT 2025 */
