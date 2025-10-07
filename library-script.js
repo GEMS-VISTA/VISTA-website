@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search functionality
     const searchInput = document.getElementById('document-search');
     const searchBtn = document.querySelector('.search-btn');
-    const filterTabs = document.querySelectorAll('.filter-tab');
+    const filterTabs = document.querySelectorAll('.category-btn');
     const bookSpines = document.querySelectorAll('.book-spine');
     const shelfSections = document.querySelectorAll('.shelf-section');
 
@@ -88,28 +88,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Search input events
-    searchInput.addEventListener('input', function() {
-        searchDocuments(this.value);
-    });
-
-    searchBtn.addEventListener('click', function() {
-        searchDocuments(searchInput.value);
-    });
-
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
             searchDocuments(this.value);
-        }
-    });
+        });
+
+        searchInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchDocuments(this.value);
+            }
+        });
+    }
+
+    if (searchBtn) {
+        searchBtn.addEventListener('click', function() {
+            if (searchInput) {
+                searchDocuments(searchInput.value);
+            }
+        });
+    }
 
     // Book spine interactions
+    console.log('Found book spines:', bookSpines.length);
     bookSpines.forEach(book => {
         book.addEventListener('click', function() {
+            console.log('Book spine clicked!');
             const title = this.querySelector('.book-title').textContent;
             const author = this.querySelector('.book-author').textContent;
             const year = this.querySelector('.book-year').textContent;
             const fileName = this.getAttribute('data-file');
             
+            console.log('Opening modal for:', title, fileName);
             openDocumentModal(title, author, year, fileName);
         });
 
@@ -123,6 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnCloseModal = document.querySelector('.btn-close-modal');
 
     function openDocumentModal(title, author, year, fileName = null) {
+        console.log('openDocumentModal called with:', title, fileName);
         modalTitle.textContent = title;
         documentModal.style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -193,10 +203,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const viewButtons = document.querySelectorAll('.btn-view');
     const downloadButtons = document.querySelectorAll('.btn-download');
 
+    console.log('Found view buttons:', viewButtons.length);
+    console.log('Found download buttons:', downloadButtons.length);
+
     viewButtons.forEach(btn => {
         btn.addEventListener('click', function() {
+            console.log('View button clicked!');
             const docTitle = this.closest('.featured-doc').querySelector('h3').textContent;
             const fileName = this.getAttribute('data-file');
+            console.log('View button - Title:', docTitle, 'File:', fileName);
             openDocumentModal(docTitle, 'Team VISTA', '2024', fileName);
         });
     });
@@ -338,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Animate filter tabs
-    document.querySelectorAll('.filter-tab').forEach((tab, index) => {
+    document.querySelectorAll('.category-btn').forEach((tab, index) => {
         tab.style.opacity = '0';
         tab.style.transform = 'translateY(-10px)';
         tab.style.transition = `all 0.4s ease ${index * 0.1}s`;
@@ -394,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Ctrl/Cmd + F to focus search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'f') {
+        if ((e.ctrlKey || e.metaKey) && e.key === 'f' && searchInput) {
             e.preventDefault();
             searchInput.focus();
         }
