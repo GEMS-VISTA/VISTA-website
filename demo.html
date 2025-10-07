@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team VISTA Virtual Lab Demo - Experience our virtual physical STEM laboratory">
+    <title>Virtual Lab Demo | Team VISTA</title>
+    <link rel="stylesheet" href="styles-dark.css">
+    <link rel="stylesheet" href="demo-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Team VISTA</div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#team" class="nav-link">Team</a></li>
+                <li><a href="technology.html" class="nav-link">Technology</a></li>
+                <li><a href="timeline.html" class="nav-link">Timeline</a></li>
+                <li><a href="library.html" class="nav-link">Library</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="demo.html" class="nav-link active">Demo</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Demo Container -->
+    <div class="demo-container">
+        <!-- Enhanced Sidebar -->
+        <aside class="demo-sidebar">
+            <div class="sidebar-header">
+                <h2>🔬 VISTA Virtual Lab</h2>
+                <div class="lab-status">
+                    <span class="status-indicator online"></span>
+                    <span>Lab Online</span>
+                </div>
+            </div>
+            
+            <!-- Equipment Selection -->
+            <div class="control-section">
+                <h3>🔧 Equipment Selection</h3>
+                <div class="equipment-grid">
+                    <div class="equipment-card active" data-equipment="power-supply">
+                        <div class="equipment-icon">⚡</div>
+                        <div class="equipment-name">Power Supply</div>
+                        <div class="equipment-model">Keysight E36312A</div>
+                    </div>
+                    <div class="equipment-card" data-equipment="oscilloscope">
+                        <div class="equipment-icon">📊</div>
+                        <div class="equipment-name">Oscilloscope</div>
+                        <div class="equipment-model">Tektronix MSO58</div>
+                    </div>
+                    <div class="equipment-card" data-equipment="multimeter">
+                        <div class="equipment-icon">🔍</div>
+                        <div class="equipment-name">Multimeter</div>
+                        <div class="equipment-model">Fluke 87V</div>
+                    </div>
+                    <div class="equipment-card" data-equipment="signal-gen">
+                        <div class="equipment-icon">〰️</div>
+                        <div class="equipment-name">Signal Gen</div>
+                        <div class="equipment-model">Rigol DG4162</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Experiment Templates -->
+            <div class="control-section">
+                <h3>📝 Lab Exercises</h3>
+                <select id="experimentSelect" class="control-select">
+                    <option value="">Select an experiment...</option>
+                    <option value="ohms-law">Ohm's Law Verification</option>
+                    <option value="rc-circuit">RC Time Constant</option>
+                    <option value="diode-char">Diode Characteristics</option>
+                    <option value="amplifier">Op-Amp Basics</option>
+                </select>
+                <button class="btn btn-secondary" id="loadExperiment">Load Experiment</button>
+            </div>
+
+            <!-- Power Supply Controls -->
+            <div class="control-section" id="powerSupplyControls">
+                <h3>Power Supply Settings</h3>
+                <div class="control-group">
+                    <label for="voltage">Voltage (V)</label>
+                    <input type="range" id="voltage" min="0" max="30" value="5" step="0.1">
+                    <span class="value-display" id="voltageDisplay">5.0 V</span>
+                </div>
+                <div class="control-group">
+                    <label for="current">Current Limit (A)</label>
+                    <input type="range" id="current" min="0" max="5" value="1" step="0.1">
+                    <span class="value-display" id="currentDisplay">1.0 A</span>
+                </div>
+                <div class="control-group">
+                    <button class="control-btn" id="outputToggle">Output: OFF</button>
+                </div>
+            </div>
+
+            <!-- Enhanced Connection Status -->
+            <div class="control-section">
+                <h3>🌐 Connection Status</h3>
+                <div class="connection-grid">
+                    <div class="connection-item">
+                        <span class="status-dot active"></span>
+                        <div>
+                            <div class="connection-label">Lab Server</div>
+                            <div class="connection-value">Connected</div>
+                        </div>
+                    </div>
+                    <div class="connection-item">
+                        <span class="status-dot active"></span>
+                        <div>
+                            <div class="connection-label">Equipment</div>
+                            <div class="connection-value">3/4 Online</div>
+                        </div>
+                    </div>
+                    <div class="connection-item">
+                        <span class="status-dot warning"></span>
+                        <div>
+                            <div class="connection-label">Video Feed</div>
+                            <div class="connection-value">720p</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="status-metrics">
+                    <div class="metric">
+                        <span class="metric-label">Latency</span>
+                        <span class="metric-value" id="latency">23ms</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Data Rate</span>
+                        <span class="metric-value" id="dataRate">60 Hz</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Users Online</span>
+                        <span class="metric-value" id="usersOnline">7</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Collaboration -->
+            <div class="control-section">
+                <h3>👥 Collaboration</h3>
+                <div class="user-list">
+                    <div class="user-item">
+                        <div class="user-avatar">H</div>
+                        <div class="user-info">
+                            <div class="user-name">Harshil (You)</div>
+                            <div class="user-status">Controlling Equipment</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-avatar">L</div>
+                        <div class="user-info">
+                            <div class="user-name">Luna</div>
+                            <div class="user-status">Observing</div>
+                        </div>
+                    </div>
+                    <div class="user-item">
+                        <div class="user-avatar">B</div>
+                        <div class="user-info">
+                            <div class="user-name">Ben</div>
+                            <div class="user-status">Taking Notes</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" id="shareSession">Share Session</button>
+            </div>
+
+            <!-- Enhanced Actions -->
+            <div class="control-section">
+                <h3>🚀 Actions</h3>
+                <div class="action-grid">
+                    <button class="btn btn-primary" id="startExperiment">
+                        <span class="btn-icon">▶️</span>
+                        Start Experiment
+                    </button>
+                    <button class="btn btn-secondary" id="pauseExperiment">
+                        <span class="btn-icon">⏸️</span>
+                        Pause
+                    </button>
+                    <button class="btn btn-outline" id="downloadData">
+                        <span class="btn-icon">💾</span>
+                        Export Data
+                    </button>
+                    <button class="btn btn-outline" id="shareResults">
+                        <span class="btn-icon">📤</span>
+                        Share
+                    </button>
+                </div>
+                <div class="recording-status">
+                    <span class="recording-dot"></span>
+                    <span id="recordingTime">00:00</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Enhanced Main Demo Area -->
+        <main class="demo-main">
+            <!-- Enhanced Header -->
+            <div class="demo-header">
+                <div class="header-content">
+                    <h1>🔬 Virtual Electronics Laboratory</h1>
+                    <p>Experience real equipment control with zero latency simulation</p>
+                    <div class="header-stats">
+                        <div class="stat">
+                            <span class="stat-number">127</span>
+                            <span class="stat-label">Experiments Completed Today</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">15</span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">99.9%</span>
+                            <span class="stat-label">Uptime</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="live-feed-toggle">
+                    <button class="btn btn-secondary" id="toggleVideoFeed">
+                        📹 Live Equipment View
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Live Video Feed -->
+            <div class="video-feed-container" id="videoFeedContainer">
+                <div class="video-feed">
+                    <div class="video-placeholder">
+                        <div class="video-controls">
+                            <button class="video-btn" id="zoomIn">🔍</button>
+                            <button class="video-btn" id="zoomOut">🔎</button>
+                            <button class="video-btn" id="panLeft">⬅️</button>
+                            <button class="video-btn" id="panRight">➡️</button>
+                        </div>
+                        <div class="video-stream">
+                            <div class="stream-overlay">
+                                📹 Live Equipment Feed - UMD Remote Lab
+                                <div class="stream-quality">720p • 60fps</div>
+                            </div>
+                            <div class="equipment-highlight" id="equipmentHighlight"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Lab Display -->
+            <div class="lab-display">
+                <!-- Equipment Tabs -->
+                <div class="equipment-tabs">
+                    <button class="tab-btn active" data-tab="power-supply">⚡ Power Supply</button>
+                    <button class="tab-btn" data-tab="oscilloscope">📊 Oscilloscope</button>
+                    <button class="tab-btn" data-tab="multimeter">🔍 Multimeter</button>
+                    <button class="tab-btn" data-tab="signal-gen">〰️ Signal Generator</button>
+                </div>
+                
+                <!-- Power Supply Interface -->
+                <div class="equipment-interface active" id="power-supply-interface">
+                    <!-- Enhanced Power Supply Interface -->
+                    <div class="equipment-view">
+                        <div class="power-supply-display">
+                            <div class="display-screen">
+                                <div class="screen-header">
+                                    <span class="device-model">Keysight E36312A Triple Output</span>
+                                    <span class="screen-time" id="screenTime">14:23:45</span>
+                                </div>
+                                <div class="display-channels">
+                                    <div class="channel-display">
+                                        <div class="channel-header">CH1 - Main Output</div>
+                                        <div class="channel-readings">
+                                            <div class="reading-group">
+                                                <span class="reading-label">Voltage</span>
+                                                <span class="reading-value" id="voltageReadout">0.00 V</span>
+                                            </div>
+                                            <div class="reading-group">
+                                                <span class="reading-label">Current</span>
+                                                <span class="reading-value" id="currentReadout">0.00 A</span>
+                                            </div>
+                                            <div class="reading-group">
+                                                <span class="reading-label">Power</span>
+                                                <span class="reading-value" id="powerReadout">0.00 W</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="channel-display secondary">
+                                        <div class="channel-header">CH2 - Auxiliary</div>
+                                        <div class="channel-readings">
+                                            <div class="reading-group">
+                                                <span class="reading-label">Voltage</span>
+                                                <span class="reading-value">+5.00 V</span>
+                                            </div>
+                                            <div class="reading-group">
+                                                <span class="reading-label">Current</span>
+                                                <span class="reading-value">0.12 A</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-panel">
+                                <div class="indicator-panel">
+                                    <div class="indicator-group">
+                                        <div class="led-indicator" id="powerLED"></div>
+                                        <span class="led-label">Power</span>
+                                    </div>
+                                    <div class="indicator-group">
+                                        <div class="led-indicator" id="outputLED"></div>
+                                        <span class="led-label">Output</span>
+                                    </div>
+                                    <div class="indicator-group">
+                                        <div class="led-indicator warning" id="limitLED"></div>
+                                        <span class="led-label">CC Mode</span>
+                                    </div>
+                                    <div class="indicator-group">
+                                        <div class="led-indicator info" id="remoteLED"></div>
+                                        <span class="led-label">Remote</span>
+                                    </div>
+                                </div>
+                                <div class="physical-controls">
+                                    <div class="knob-group">
+                                        <div class="virtual-knob" data-control="voltage">
+                                            <div class="knob-indicator"></div>
+                                        </div>
+                                        <span class="knob-label">Voltage</span>
+                                    </div>
+                                    <div class="knob-group">
+                                        <div class="virtual-knob" data-control="current">
+                                            <div class="knob-indicator"></div>
+                                        </div>
+                                        <span class="knob-label">Current</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Oscilloscope Interface -->
+                <div class="equipment-interface" id="oscilloscope-interface">
+                    <div class="equipment-view">
+                        <div class="oscilloscope-display">
+                            <div class="scope-screen">
+                                <div class="scope-header">
+                                    <span class="device-model">Tektronix MSO58 - 1 GHz</span>
+                                    <div class="scope-controls">
+                                        <button class="scope-btn">Run/Stop</button>
+                                        <button class="scope-btn">Single</button>
+                                        <button class="scope-btn">Auto</button>
+                                    </div>
+                                </div>
+                                <div class="scope-display">
+                                    <canvas id="scopeCanvas" width="800" height="400"></canvas>
+                                    <div class="scope-measurements">
+                                        <div class="measurement">Freq: <span id="frequency">1.00 kHz</span></div>
+                                        <div class="measurement">Vpp: <span id="peakToPeak">5.00 V</span></div>
+                                        <div class="measurement">Vavg: <span id="average">2.50 V</span></div>
+                                        <div class="measurement">Period: <span id="period">1.00 ms</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scope-controls-panel">
+                                <div class="channel-controls">
+                                    <div class="channel-group">
+                                        <label class="channel-label">CH1</label>
+                                        <input type="range" class="scope-control" id="ch1Scale" min="0.1" max="10" step="0.1" value="1">
+                                        <span class="control-value">1V/div</span>
+                                    </div>
+                                    <div class="channel-group">
+                                        <label class="channel-label">Time</label>
+                                        <input type="range" class="scope-control" id="timeBase" min="0.1" max="10" step="0.1" value="1">
+                                        <span class="control-value">1ms/div</span>
+                                    </div>
+                                    <div class="channel-group">
+                                        <label class="channel-label">Trigger</label>
+                                        <input type="range" class="scope-control" id="triggerLevel" min="-5" max="5" step="0.1" value="0">
+                                        <span class="control-value">0V</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Multimeter Interface -->
+                <div class="equipment-interface" id="multimeter-interface">
+                    <div class="equipment-view">
+                        <div class="multimeter-display">
+                            <div class="meter-screen">
+                                <div class="meter-header">
+                                    <span class="device-model">Fluke 87V Industrial Multimeter</span>
+                                </div>
+                                <div class="meter-main-display">
+                                    <div class="primary-reading">
+                                        <span class="reading-value" id="primaryReading">0.000</span>
+                                        <span class="reading-unit" id="primaryUnit">V DC</span>
+                                    </div>
+                                    <div class="secondary-reading">
+                                        <span class="reading-value" id="secondaryReading">60.0</span>
+                                        <span class="reading-unit">Hz</span>
+                                    </div>
+                                </div>
+                                <div class="meter-indicators">
+                                    <div class="indicator">AUTO</div>
+                                    <div class="indicator active">DC</div>
+                                    <div class="indicator">HOLD</div>
+                                    <div class="indicator">MIN/MAX</div>
+                                </div>
+                            </div>
+                            <div class="meter-controls">
+                                <div class="function-selector">
+                                    <select id="meterFunction" class="meter-select">
+                                        <option value="vdc">V DC</option>
+                                        <option value="vac">V AC</option>
+                                        <option value="resistance">Resistance</option>
+                                        <option value="current">Current</option>
+                                        <option value="frequency">Frequency</option>
+                                    </select>
+                                </div>
+                                <div class="meter-buttons">
+                                    <button class="meter-btn">HOLD</button>
+                                    <button class="meter-btn">MIN/MAX</button>
+                                    <button class="meter-btn">REL</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Signal Generator Interface -->
+                <div class="equipment-interface" id="signal-gen-interface">
+                    <div class="equipment-view">
+                        <div class="signal-gen-display">
+                            <div class="gen-screen">
+                                <div class="gen-header">
+                                    <span class="device-model">Rigol DG4162 Function Generator</span>
+                                </div>
+                                <div class="gen-channels">
+                                    <div class="gen-channel">
+                                        <div class="channel-header">Channel 1</div>
+                                        <div class="waveform-preview">
+                                            <canvas id="waveformPreview" width="200" height="100"></canvas>
+                                        </div>
+                                        <div class="channel-settings">
+                                            <div class="setting-group">
+                                                <label>Waveform</label>
+                                                <select id="waveformType">
+                                                    <option value="sine">Sine</option>
+                                                    <option value="square">Square</option>
+                                                    <option value="triangle">Triangle</option>
+                                                    <option value="sawtooth">Sawtooth</option>
+                                                </select>
+                                            </div>
+                                            <div class="setting-group">
+                                                <label>Frequency</label>
+                                                <input type="number" id="genFrequency" value="1000" step="1">
+                                                <span class="unit">Hz</span>
+                                            </div>
+                                            <div class="setting-group">
+                                                <label>Amplitude</label>
+                                                <input type="number" id="genAmplitude" value="5" step="0.1">
+                                                <span class="unit">V</span>
+                                            </div>
+                                            <div class="setting-group">
+                                                <label>Offset</label>
+                                                <input type="number" id="genOffset" value="0" step="0.1">
+                                                <span class="unit">V</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="gen-controls">
+                                    <button class="gen-btn" id="outputEnable">Output: OFF</button>
+                                    <button class="gen-btn">Sync</button>
+                                    <button class="gen-btn">Burst</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- Enhanced Data Visualization -->
+                <div class="data-visualization">
+                    <div class="viz-header">
+                        <h3>📈 Real-Time Data Analysis</h3>
+                        <div class="viz-controls">
+                            <button class="viz-btn active" data-view="waveform">Waveform</button>
+                            <button class="viz-btn" data-view="trend">Trend</button>
+                            <button class="viz-btn" data-view="histogram">Histogram</button>
+                            <button class="viz-btn" data-view="fft">FFT</button>
+                        </div>
+                    </div>
+                    <div class="viz-content">
+                        <div class="viz-panel active" id="waveformPanel">
+                            <canvas id="waveformCanvas" width="800" height="300"></canvas>
+                        </div>
+                        <div class="viz-panel" id="trendPanel">
+                            <canvas id="trendCanvas" width="800" height="300"></canvas>
+                        </div>
+                        <div class="viz-panel" id="histogramPanel">
+                            <canvas id="histogramCanvas" width="800" height="300"></canvas>
+                        </div>
+                        <div class="viz-panel" id="fftPanel">
+                            <canvas id="fftCanvas" width="800" height="300"></canvas>
+                        </div>
+                    </div>
+                    <div class="viz-stats">
+                        <div class="stat-group">
+                            <span class="stat-label">Samples</span>
+                            <span class="stat-value" id="sampleCount">1,240</span>
+                        </div>
+                        <div class="stat-group">
+                            <span class="stat-label">Rate</span>
+                            <span class="stat-value">1 kS/s</span>
+                        </div>
+                        <div class="stat-group">
+                            <span class="stat-label">Resolution</span>
+                            <span class="stat-value">16-bit</span>
+                        </div>
+                        <div class="stat-group">
+                            <span class="stat-label">Duration</span>
+                            <span class="stat-value" id="recordingDuration">00:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Circuit Builder -->
+                <div class="circuit-builder">
+                    <div class="circuit-header">
+                        <h3>⚙️ Interactive Circuit Designer</h3>
+                        <div class="circuit-tools">
+                            <button class="tool-btn active" data-tool="select">🔍</button>
+                            <button class="tool-btn" data-tool="wire">—</button>
+                            <button class="tool-btn" data-tool="resistor">R</button>
+                            <button class="tool-btn" data-tool="capacitor">C</button>
+                            <button class="tool-btn" data-tool="inductor">L</button>
+                            <button class="tool-btn" data-tool="led">LED</button>
+                            <button class="tool-btn" data-tool="clear">🗑️</button>
+                        </div>
+                    </div>
+                    <div class="circuit-workspace">
+                        <svg id="circuitSVG" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Grid -->
+                            <defs>
+                                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e0e0e0" stroke-width="1" opacity="0.5"/>
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#grid)"/>
+                            
+                            <!-- Pre-built circuit -->
+                            <g id="defaultCircuit">
+                                <!-- Power Supply -->
+                                <rect x="50" y="150" width="80" height="50" fill="#333" stroke="#e21833" stroke-width="2" rx="5"/>
+                                <text x="90" y="180" fill="white" text-anchor="middle" font-size="14" font-weight="bold">PS</text>
+                                
+                                <!-- Wires -->
+                                <line x1="130" y1="165" x2="200" y2="165" stroke="#e21833" stroke-width="3"/>
+                                <line x1="130" y1="185" x2="200" y2="185" stroke="#333" stroke-width="3"/>
+                                
+                                <!-- Resistor -->
+                                <g id="resistor1">
+                                    <rect x="200" y="155" width="60" height="20" fill="#f4e4bc" stroke="#8b4513" stroke-width="2" rx="3"/>
+                                    <line x1="205" y1="160" x2="205" y2="170" stroke="#8b4513" stroke-width="1"/>
+                                    <line x1="215" y1="160" x2="215" y2="170" stroke="#8b4513" stroke-width="1"/>
+                                    <line x1="225" y1="160" x2="225" y2="170" stroke="#8b4513" stroke-width="1"/>
+                                    <line x1="235" y1="160" x2="235" y2="170" stroke="#8b4513" stroke-width="1"/>
+                                    <text x="230" y="190" text-anchor="middle" font-size="12" fill="#333">1kΩ</text>
+                                </g>
+                                
+                                <!-- LED -->
+                                <g id="led1">
+                                    <circle cx="320" cy="175" r="20" fill="none" stroke="#666" stroke-width="2"/>
+                                    <circle cx="320" cy="175" r="15" fill="#ff4444" opacity="0.3" id="ledGlow"/>
+                                    <path d="M 310 175 L 320 165 L 330 175 L 320 185 Z" fill="#ff0000" opacity="0.6"/>
+                                    <text x="320" y="205" text-anchor="middle" font-size="12" fill="#333">LED</text>
+                                </g>
+                                
+                                <!-- Complete circuit wires -->
+                                <line x1="260" y1="165" x2="300" y2="165" stroke="#e21833" stroke-width="3"/>
+                                <line x1="300" y1="165" x2="300" y2="175" stroke="#e21833" stroke-width="3"/>
+                                <line x1="340" y1="175" x2="380" y2="175" stroke="#333" stroke-width="3"/>
+                                <line x1="380" y1="175" x2="380" y2="185" stroke="#333" stroke-width="3"/>
+                                <line x1="200" y1="185" x2="380" y2="185" stroke="#333" stroke-width="3"/>
+                                
+                                <!-- Node indicators -->
+                                <circle cx="200" cy="165" r="3" fill="#e21833"/>
+                                <circle cx="260" cy="165" r="3" fill="#e21833"/>
+                                <circle cx="300" cy="175" r="3" fill="#e21833"/>
+                                <circle cx="340" cy="175" r="3" fill="#333"/>
+                                <circle cx="380" cy="185" r="3" fill="#333"/>
+                                <circle cx="200" cy="185" r="3" fill="#333"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div class="circuit-analysis">
+                        <div class="analysis-group">
+                            <span class="analysis-label">Total Resistance</span>
+                            <span class="analysis-value" id="totalResistance">1.00 kΩ</span>
+                        </div>
+                        <div class="analysis-group">
+                            <span class="analysis-label">Expected Current</span>
+                            <span class="analysis-value" id="expectedCurrent">5.00 mA</span>
+                        </div>
+                        <div class="analysis-group">
+                            <span class="analysis-label">Power Dissipation</span>
+                            <span class="analysis-value" id="powerDissipation">25.0 mW</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Instructions & Help -->
+            <div class="demo-instructions">
+                <div class="instructions-header">
+                    <h3>🎓 Interactive Lab Guide</h3>
+                    <div class="help-tabs">
+                        <button class="help-tab active" data-help="getting-started">Getting Started</button>
+                        <button class="help-tab" data-help="experiments">Experiments</button>
+                        <button class="help-tab" data-help="troubleshooting">Troubleshooting</button>
+                        <button class="help-tab" data-help="safety">Safety</button>
+                    </div>
+                </div>
+                
+                <div class="help-content">
+                    <div class="help-panel active" id="getting-started">
+                        <h4>🚀 Getting Started with VISTA Lab</h4>
+                        <div class="step-by-step">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-content">
+                                    <h5>Select Your Equipment</h5>
+                                    <p>Choose from our available instruments: Power Supply, Oscilloscope, Multimeter, or Signal Generator</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-content">
+                                    <h5>Load an Experiment</h5>
+                                    <p>Pick from pre-designed lab exercises or create your own custom experiment</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-content">
+                                    <h5>Configure Settings</h5>
+                                    <p>Adjust voltage, current, frequency, and other parameters using the intuitive controls</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-content">
+                                    <h5>Start Recording</h5>
+                                    <p>Begin your experiment and watch real-time data visualization and analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-panel" id="experiments">
+                        <h4>🧪 Available Experiments</h4>
+                        <div class="experiment-list">
+                            <div class="experiment-item">
+                                <h5>Ohm's Law Verification</h5>
+                                <p>Measure voltage and current relationships across different resistors</p>
+                                <span class="difficulty beginner">Beginner</span>
+                            </div>
+                            <div class="experiment-item">
+                                <h5>RC Time Constant</h5>
+                                <p>Analyze capacitor charging and discharging characteristics</p>
+                                <span class="difficulty intermediate">Intermediate</span>
+                            </div>
+                            <div class="experiment-item">
+                                <h5>Diode Characteristics</h5>
+                                <p>Plot I-V curves for different types of diodes</p>
+                                <span class="difficulty intermediate">Intermediate</span>
+                            </div>
+                            <div class="experiment-item">
+                                <h5>Op-Amp Circuits</h5>
+                                <p>Explore operational amplifier configurations and applications</p>
+                                <span class="difficulty advanced">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-panel" id="troubleshooting">
+                        <h4>🔧 Common Issues & Solutions</h4>
+                        <div class="faq-list">
+                            <div class="faq-item">
+                                <h5>Connection Lost to Equipment</h5>
+                                <p>Check your internet connection and refresh the page. The system will automatically reconnect.</p>
+                            </div>
+                            <div class="faq-item">
+                                <h5>No Data Being Recorded</h5>
+                                <p>Ensure the equipment output is enabled and you've clicked "Start Experiment".</p>
+                            </div>
+                            <div class="faq-item">
+                                <h5>Measurements Seem Incorrect</h5>
+                                <p>Verify your circuit connections and check that all equipment is properly configured.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="help-panel" id="safety">
+                        <h4>⚠️ Safety Guidelines</h4>
+                        <div class="safety-guidelines">
+                            <div class="safety-item">
+                                <span class="safety-icon">⚡</span>
+                                <div>
+                                    <h5>Electrical Safety</h5>
+                                    <p>All equipment is remotely controlled with built-in safety limits. Maximum voltages are capped at safe levels.</p>
+                                </div>
+                            </div>
+                            <div class="safety-item">
+                                <span class="safety-icon">🛡️</span>
+                                <div>
+                                    <h5>Equipment Protection</h5>
+                                    <p>Current limiting and over-voltage protection prevent damage to instruments and circuits.</p>
+                                </div>
+                            </div>
+                            <div class="safety-item">
+                                <span class="safety-icon">📊</span>
+                                <div>
+                                    <h5>Data Security</h5>
+                                    <p>Your experimental data is securely stored and only accessible to your team members.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="safety-note">
+                            <strong>Demo Notice:</strong> This is a demonstration interface. In the full VISTA system, 
+                            you'll control real laboratory equipment with comprehensive safety monitoring and emergency stops.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <a href="https://umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/Maryland-Terrapins-Logo.png" alt="UMD Logo" class="footer-logo">
+                    </a>
+                    <a href="https://gemstone.umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/gemstones_logo.png" alt="Gemstone Logo" class="footer-logo">
+                    </a>
+                </div>
+                <div class="footer-text">
+                    <p class="footer-title">Team VISTA</p>
+                    <p class="footer-subtitle">Virtual Interactive STEM Teaching Aid</p>
+                    <p class="footer-copyright">© 2025 University of Maryland Gemstone Honors Program</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="demo-script.js"></script>
+</body>
+</html>

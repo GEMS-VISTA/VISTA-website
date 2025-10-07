@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team VISTA Gallery - Photos and videos of our virtual physical lab development">
+    <title>Gallery | Team VISTA</title>
+    <link rel="stylesheet" href="styles-dark.css">
+    <link rel="stylesheet" href="gallery-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Team VISTA</div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#team" class="nav-link">Team</a></li>
+                <li><a href="technology.html" class="nav-link">Technology</a></li>
+                <li><a href="timeline.html" class="nav-link">Timeline</a></li>
+                <li><a href="library.html" class="nav-link">Library</a></li>
+                <li><a href="gallery.html" class="nav-link active">Gallery</a></li>
+                <li><a href="demo.html" class="nav-link">Demo</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <section class="gallery-hero">
+        <div class="container">
+            <h1 class="gallery-title">Development Gallery</h1>
+            <p class="gallery-subtitle">
+                Watch our virtual laboratory system in action - from LED control demonstrations to complete interface integrations
+            </p>
+        </div>
+    </section>
+
+    <!-- Gallery Filters -->
+    <section class="gallery-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="photos">Photos</button>
+                <button class="filter-btn" data-filter="videos">Videos</button>
+                <button class="filter-btn" data-filter="interface1">Interface 1</button>
+                <button class="filter-btn" data-filter="interface2">Interface 2</button>
+                <button class="filter-btn" data-filter="interface3">Interface 3</button>
+                <button class="filter-btn" data-filter="demos">Complete System</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Content -->
+    <section class="gallery-content">
+        <div class="container">
+            <!-- Main Carousel -->
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-slides" id="carouselSlides">
+                        <!-- Video Slides -->
+                        <div class="carousel-slide active" data-category="videos interface1 demos">
+                            <div class="slide-content">
+                                <div class="video-container">
+                                    <video 
+                                        src="gallery/RemoteLabControl_interfaceUIDemo.mp4" 
+                                        preload="metadata">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Complete System UI Demo</h3>
+                                    <p>Full interface demonstration showing remote lab control through web UI</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface1">Interface 1</span>
+                                        <span class="tag demos">Complete System</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="videos interface2">
+                            <div class="slide-content">
+                                <div class="video-container">
+                                    <video 
+                                        src="gallery/Spring2025_remoteControlLED_final.mov" 
+                                        preload="metadata">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Remote LED Control - Spring 2025</h3>
+                                    <p>Final demonstration of wireless LED control system</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface2">Interface 2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="videos interface3">
+                            <div class="slide-content">
+                                <div class="video-container">
+                                    <video 
+                                        src="gallery/Electrical Interface 3.mov" 
+                                        preload="metadata">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Interface 3: Electrical Control</h3>
+                                    <p>Hardware interface demonstration with electrical components</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface3">Interface 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="videos interface3">
+                            <div class="slide-content">
+                                <div class="video-container">
+                                    <video 
+                                        src="gallery/ESP32 & Arduino LED (Wired).mp4" 
+                                        preload="metadata">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>ESP32 & Arduino LED (Wired)</h3>
+                                    <p>Wired communication between ESP32 and Arduino for LED control</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface3">Interface 3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="videos interface2">
+                            <div class="slide-content">
+                                <div class="video-container">
+                                    <video 
+                                        src="gallery/remoteControlLED.mp4" 
+                                        preload="metadata">
+                                        Your browser does not support the video tag.
+                                    </video>
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Remote Control LED</h3>
+                                    <p>Wireless LED control demonstration via web interface</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface2">Interface 2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Photo Slides -->
+                        <div class="carousel-slide" data-category="photos">
+                            <div class="slide-content">
+                                <div class="image-container">
+                                    <img src="gallery/teamVista.jpeg" alt="Team VISTA Group Photo" loading="lazy">
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Team VISTA</h3>
+                                    <p>Our complete research team working together on virtual laboratory development</p>
+                                    <div class="slide-tags">
+                                        <span class="tag photos">Team Photo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="photos">
+                            <div class="slide-content">
+                                <div class="image-container">
+                                    <img src="gallery/Gemstone_vistaMentor.jpg" alt="Gemstone VISTA Mentor Meeting" loading="lazy">
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Gemstone Mentor Meeting</h3>
+                                    <p>Collaborating with our faculty mentor on research direction and methodology</p>
+                                    <div class="slide-tags">
+                                        <span class="tag photos">Collaboration</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="photos">
+                            <div class="slide-content">
+                                <div class="image-container">
+                                    <img src="gallery/teamVista_meeting.jpeg" alt="Team VISTA Working Session" loading="lazy">
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Team Working Session</h3>
+                                    <p>Interface teams coordinating development and testing procedures</p>
+                                    <div class="slide-tags">
+                                        <span class="tag photos">Meeting</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="photos interface3">
+                            <div class="slide-content">
+                                <div class="image-container">
+                                    <img src="gallery/M-SEM_Lab.jpeg" alt="M-SEM Laboratory Equipment" loading="lazy">
+                                </div>
+                                <div class="slide-info">
+                                    <h3>M-SEM Laboratory</h3>
+                                    <p>Professional laboratory environment where our virtual system will be deployed</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface3">Interface 3</span>
+                                        <span class="tag photos">Laboratory</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide" data-category="photos interface3">
+                            <div class="slide-content">
+                                <div class="image-container">
+                                    <img src="gallery/labElectronics.jpeg" alt="Laboratory Electronics Setup" loading="lazy">
+                                </div>
+                                <div class="slide-info">
+                                    <h3>Lab Electronics Setup</h3>
+                                    <p>Hardware components and electronic equipment used in our virtual lab system</p>
+                                    <div class="slide-tags">
+                                        <span class="tag interface3">Interface 3</span>
+                                        <span class="tag photos">Hardware</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-nav prev" id="prevBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="carousel-nav next" id="nextBtn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Carousel Indicators -->
+                <div class="carousel-indicators" id="carouselIndicators">
+                    <!-- Indicators will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Thumbnail Gallery -->
+            <div class="thumbnail-gallery">
+                <h3>Quick Navigation</h3>
+                <div class="thumbnail-grid" id="thumbnailGrid">
+                    <!-- Thumbnails will be generated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Development Journey Section -->
+            <div class="gallery-description">
+                <h2>Our Development Journey</h2>
+                <p>Explore our team's progress through photos of collaboration sessions, laboratory environments, and video demonstrations of our virtual laboratory system. From team meetings to hardware testing, these images and videos showcase the complete development process of our three-interface architecture.</p>
+                
+                <div class="interface-legend">
+                    <div class="legend-item">
+                        <span class="legend-color interface1"></span>
+                        <span>Interface 1: Frontend UI & Backend Systems</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color interface2"></span>
+                        <span>Interface 2: Network Bridge & Communication</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color interface3"></span>
+                        <span>Interface 3: Hardware Control & Laboratory</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color demos"></span>
+                        <span>Complete System Demonstrations</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-color photos"></span>
+                        <span>Team Collaboration & Laboratory</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <a href="https://umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/Maryland-Terrapins-Logo.png" alt="UMD Logo" class="footer-logo">
+                    </a>
+                    <a href="https://gemstone.umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/gemstones_logo.png" alt="Gemstone Logo" class="footer-logo">
+                    </a>
+                </div>
+                <div class="footer-text">
+                    <p class="footer-title">Team VISTA</p>
+                    <p class="footer-subtitle">Virtual Interactive STEM Teaching Aid</p>
+                    <p class="footer-copyright">© 2025 University of Maryland Gemstone Honors Program</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="gallery-script.js"></script>
+</body>
+</html>

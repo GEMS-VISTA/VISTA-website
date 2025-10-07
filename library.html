@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Team VISTA Research Library - Access our academic papers, presentations, and documentation">
+    <title>Research Library | Team VISTA</title>
+    <link rel="stylesheet" href="styles-dark.css">
+    <link rel="stylesheet" href="library-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">Team VISTA</div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#team" class="nav-link">Team</a></li>
+                <li><a href="technology.html" class="nav-link">Technology</a></li>
+                <li><a href="timeline.html" class="nav-link">Timeline</a></li>
+                <li><a href="library.html" class="nav-link active">Library</a></li>
+                <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+                <li><a href="demo.html" class="nav-link">Demo</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Library Entrance -->
+    <section class="library-entrance">
+        <div class="entrance-doors">
+            <div class="door-overlay"></div>
+            <div class="entrance-content">
+                <h1 class="library-title">
+                    <span class="title-main">VISTA Research Library</span>
+                    <span class="title-sub">Academic Repository & Documentation Center</span>
+                </h1>
+                <p class="entrance-quote">
+                    "A repository of knowledge is a treasure of infinite worth" 
+                </p>
+                <div class="library-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Research Papers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Presentations</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">11</span>
+                        <span class="stat-label">Total Documents</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Library Navigation -->
+    <section class="library-navigation">
+        <div class="container">
+            <div class="nav-header">
+                <h2>Document Collection</h2>
+                <p>Browse our research papers, presentations, and documentation</p>
+            </div>
+            <div class="document-categories">
+                <button class="category-btn active" data-filter="all">All Documents</button>
+                <button class="category-btn" data-filter="papers">Research Papers</button>
+                <button class="category-btn" data-filter="presentations">Presentations</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reading Room - Featured Documents -->
+    <section class="reading-room">
+        <div class="container">
+            <div class="room-header">
+                <h2>Reading Room</h2>
+                <p>Recently added and featured documents</p>
+            </div>
+            <div class="featured-documents">
+                <div class="featured-doc">
+                    <div class="doc-cover">
+                        <div class="doc-icon">📄</div>
+                        <div class="doc-badge">NEW</div>
+                    </div>
+                    <div class="doc-info">
+                        <h3>Interface 3: Semester 3</h3>
+                        <p class="doc-meta">Research Paper • 2024 • Team VISTA</p>
+                        <p class="doc-description">Latest progress report on the third interface development and implementation.</p>
+                        <div class="doc-actions">
+                            <button class="btn-view" data-file="Interface 3_ Semester 3.pdf">View Document</button>
+                            <button class="btn-download" data-file="Interface 3_ Semester 3.pdf">Check Out (PDF)</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="featured-doc">
+                    <div class="doc-cover">
+                        <div class="doc-icon">🎨</div>
+                        <div class="doc-badge">FEATURED</div>
+                    </div>
+                    <div class="doc-info">
+                        <h3>Proposal Presentation SP25</h3>
+                        <p class="doc-meta">Presentation • 2024 • Team VISTA</p>
+                        <p class="doc-description">Our comprehensive project proposal presentation for Spring 2025.</p>
+                        <div class="doc-actions">
+                            <button class="btn-view" data-file="Proposal Presentation SP25.pdf">View Slides</button>
+                            <button class="btn-download" data-file="Proposal Presentation SP25.pdf">Check Out (PDF)</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Library Shelves -->
+    <section class="library-shelves">
+        <div class="container">
+            <div class="shelves-header">
+                <h2>Document Collections</h2>
+                <p>Browse our organized collections</p>
+            </div>
+            
+            <!-- Research Papers Shelf -->
+            <div class="shelf-section">
+                <div class="shelf-header">
+                    <h3>📚 Research Papers</h3>
+                    <span class="shelf-count">4 documents</span>
+                </div>
+                <div class="bookshelf">
+                    <div class="book-spine" data-category="papers" data-file="Literature Review.pdf">
+                        <div class="book-title">Literature Review</div>
+                        <div class="book-author">Team VISTA</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine" data-category="papers" data-file="Methodology.pdf">
+                        <div class="book-title">Methodology</div>
+                        <div class="book-author">Team VISTA</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine" data-category="papers" data-file="References.pdf">
+                        <div class="book-title">References</div>
+                        <div class="book-author">Team VISTA</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine" data-category="papers" data-file="Stakeholders and Equity Impact.pdf">
+                        <div class="book-title">Stakeholders and Equity Impact</div>
+                        <div class="book-author">Team VISTA</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Presentations Shelf -->
+            <div class="shelf-section">
+                <div class="shelf-header">
+                    <h3>🎨 Presentations</h3>
+                    <span class="shelf-count">7 documents</span>
+                </div>
+                <div class="bookshelf">
+                    <div class="book-spine presentation" data-category="presentations" data-file="Proposal Presentation SP25.pdf">
+                        <div class="book-title">Proposal Presentation SP25</div>
+                        <div class="book-author">Team VISTA</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="Interface Two Final Presentation.pdf">
+                        <div class="book-title">Interface Two Final Presentation</div>
+                        <div class="book-author">Interface 2 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="First Interface Proposal.pdf">
+                        <div class="book-title">First Interface Proposal</div>
+                        <div class="book-author">Interface 1 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="Second Interface Proposal.pdf">
+                        <div class="book-title">Second Interface Proposal</div>
+                        <div class="book-author">Interface 2 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="Third Interface Proposal.pdf">
+                        <div class="book-title">Third Interface Proposal</div>
+                        <div class="book-author">Interface 3 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="First Interface Semester Report.pdf">
+                        <div class="book-title">First Interface Semester Report</div>
+                        <div class="book-author">Interface 1 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                    <div class="book-spine presentation" data-category="presentations" data-file="Interface 3_ Semester 3.pdf">
+                        <div class="book-title">Interface 3: Semester 3</div>
+                        <div class="book-author">Interface 3 Team</div>
+                        <div class="book-year">2024</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Document Viewer Modal -->
+    <div class="document-modal" id="documentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Document Viewer</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="document-viewer">
+                    <div class="viewer-placeholder">
+                        <p>Document preview would appear here</p>
+                        <p>In a full implementation, this would show PDF/PPTX content</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-download-modal">Download Document</button>
+                <button class="btn-close-modal">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <a href="https://umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/Maryland-Terrapins-Logo.png" alt="UMD Logo" class="footer-logo">
+                    </a>
+                    <a href="https://gemstone.umd.edu" target="_blank" rel="noopener noreferrer">
+                        <img src="assets/gemstones_logo.png" alt="Gemstone Logo" class="footer-logo">
+                    </a>
+                </div>
+                <div class="footer-text">
+                    <p class="footer-title">Team VISTA</p>
+                    <p class="footer-subtitle">Virtual Interactive STEM Teaching Aid</p>
+                    <p class="footer-copyright">© 2025 University of Maryland Gemstone Honors Program</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="library-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+/* Timeline Page Styles */
+
+.timeline-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #b51329 100%);
+    color: var(--text-primary);
+    padding: 120px 0 60px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.timeline-page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    animation: fadeInUp 0.8s ease;
+}
+
+.timeline-page-subtitle {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+    animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+/* Full Timeline Section */
+.timeline-full {
+    padding: 80px 0;
+    background: var(--bg-dark);
+    position: relative;
+}
+
+/* Year Sections */
+.year-section {
+    margin-bottom: 5rem;
+    position: relative;
+}
+
+.year-marker {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.year-number {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--primary);
+    opacity: 0.15;
+    position: relative;
+    display: inline-block;
+    transition: all 0.5s ease;
+}
+
+.year-number.active {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.year-number::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+}
+
+/* Event Cards */
+.timeline-events {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.event-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.event-card.fall::before {
+    background: linear-gradient(180deg, #ff6b35, #ff8c42);
+}
+
+.event-card.spring::before {
+    background: linear-gradient(180deg, #00b4d8, #0096c7);
+}
+
+.event-card:hover {
+    transform: translateX(10px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px rgba(226, 24, 51, 0.1);
+}
+
+.event-card:hover::before {
+    width: 8px;
+}
+
+/* Event Header */
+.event-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.season-tag {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-card.fall .season-tag {
+    background: rgba(255, 107, 53, 0.2);
+    color: #ff6b35;
+}
+
+.event-card.spring .season-tag {
+    background: rgba(0, 180, 216, 0.2);
+    color: #00b4d8;
+}
+
+.event-header h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* Milestones */
+.milestone-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.milestone {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.milestone-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+.milestone.celebration .milestone-icon {
+    color: var(--accent);
+    animation: pulse 2s infinite;
+}
+
+.milestone h4 {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.milestone p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Final Event */
+.event-card.final {
+    background: linear-gradient(135deg, var(--bg-card), rgba(226, 24, 51, 0.05));
+    border-color: var(--accent);
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    margin-top: 5rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    max-width: 600px;
+    height: 8px;
+    background: var(--bg-card);
+    border-radius: 10px;
+    margin: 0 auto 1.5rem;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+    transition: width 2s ease;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.progress-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Timeline Overview - Zoom Out View */
+.timeline-overview {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-card) 50%, var(--bg-darker) 100%);
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.8s ease;
+}
+
+.timeline-overview.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.overview-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 4rem;
+}
+
+.overview-timeline {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.overview-timeline::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--primary) 0%, 
+        var(--accent) 25%, 
+        var(--primary) 50%, 
+        var(--accent) 75%, 
+        var(--primary) 100%);
+    z-index: 0;
+}
+
+.overview-item {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.overview-year {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.overview-bar {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 3s infinite;
+}
+
+.overview-bar::before {
+    content: '→';
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.overview-bar.fall {
+    background: linear-gradient(135deg, #ff6b35, #ff8c42);
+}
+
+.overview-bar.spring {
+    background: linear-gradient(135deg, #00b4d8, #0096c7);
+}
+
+.overview-label {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .timeline-page-title {
+        font-size: 2rem;
+    }
+    
+    .year-number {
+        font-size: 3rem;
+    }
+    
+    .event-card {
+        padding: 1.5rem;
+    }
+    
+    .event-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .milestone {
+        flex-direction: column;
+    }
+    
+    .event-card:hover {
+        transform: translateX(0);
+    }
+}
